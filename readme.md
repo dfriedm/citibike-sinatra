@@ -100,8 +100,9 @@ so we're getting name data, but we actually want longitude and latitude data. wh
 
 so, the params are determined by the `value` attribute of the `<select>` element. originally, we were just putting the station's name in there.. but we can change that.
 
+########################
 2. change ther `value` of each `<select>` element to an array, where the first element is the latitude and the second element is the longitude of any given station. test this by printing the params to the map page. you'll want to see something like this:
-
+######################
 ![latlong](http://content.screencast.com/users/ag_dubs/folders/Jing/media/6283fefe-4e30-4e5b-b09c-89a3de24e330/00000050.png)
 
 ooops. this data doesn't look right. we need to fix it. look at sarah's blog post for advice on how to do this:

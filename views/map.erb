@@ -1,9 +1,67 @@
+<ul>
+
+  <li>Start of Trip: <%= @start %></li>
+  <li>End of Trip: <%= @end %></li>  
+</ul>
+
 <h1>MAP!</h1>
 <div id="map"></div>
 <script type="text/javascript" charset="utf-8">
   var map = L.map('map').setView([40.7142, -74.0064], 13);
+  L.marker(<%= @start %>).addTo(map); 
+  L.marker(<%= @end %>).addTo(map); 
+  L.polygon([
+    <%= @start %>,
+    <%= @end %>
+
+    ]).addTo(map);
+
+
   L.tileLayer('http://tile.stamen.com/toner/{z}/{x}/{y}.png', {attribution: 'Stamen Toner'}, {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
     maxZoom: 18
   }).addTo(map);
+
+
 </script>
+
+
+
+
+
+<a href="/">Home Page</a>
+
+
+<br>
+Should look like: <br>
+<a href="http://content.screencast.com/users/ag_dubs/folders/Jing/media/c544724f-1eea-433b-80fe-46079fb41d0f/00000048.png">Example</a>
+<br>
+Fixing: <br>
+
+http://sarahduve.github.io/blog/2013/06/27/dont-forget-to-float/
+
+
+here:
+- `L` is the leaflet library
+- `.marker` is a method that creates a marker object. it takes one parameter, an array with 2 elements, `longitude` and `latitude`
+- `.addTo` is a method that takes an objects and adds it to a map, which is passed as the parameter `map` (NOTE: that map was made earlier using this code `var map = L.map('map').setView([40.7142, -74.0064], 13);`)
+
+so now:
+1. add a marker for the start and end locations
+
+in addition to markers, leaflet also allows you to draw polygons. a line is considered a polygon.
+
+making a polygon is really similar to making a marker; except you use `.polygon` instead of `.marker` and you just simply pass it more points as parameters:
+```javascript
+L.polygon([
+    [lat1, lng1],
+    [lat2, lng2],
+    [lat3, lng3]
+]).addTo(map);
+```
+using that knowledge
+2. create a line from the start location to the end location.
+
+
+you now have something that looks like this:
+![complete](http://content.screencast.com/users/ag_dubs/folders/Jing/media/ae7835ad-ddd7-425a-84d3-1e18bb693d1e/00000051.png)

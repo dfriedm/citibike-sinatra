@@ -1,0 +1,36 @@
+<h1>Map My Route!</h1>
+
+<form action="/map" method='POST'>
+  
+  Start: <br>
+  <select name="start"> 
+    <% @data.each do |item| %>
+      <option value="[<%= item["lat"]/1000000.0 %>, <%= item["lng"]/1000000.0%>]"><%= item["name"] %></option>
+    <% end %>
+  </select><br>
+    
+  End: <br>
+  <select name="end"> 
+    <% @data.each do |item| %>
+      <option value="[<%= item["lat"]/1000000.0 %>, <%= item["lng"]/1000000.0%>]"><%= item["name"] %></option>
+    <% end %>
+  </select><br>
+  
+  <input type="submit" value="Submit">
+
+</form>
+
+
+
+
+you should now have a form that looks like this: <br>
+<a href="http://content.screencast.com/users/ag_dubs/folders/Jing/media/abca7668-8e7f-4213-a8ac-ac0fa61613c8/00000047.png">example link</a><br>
+
+
+what's the difference between a select element and an input element
+
+<br><br><br>
+
+
+<br>
+<a href="/home">Home Page</a>
